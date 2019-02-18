@@ -23,7 +23,7 @@ public class CacheableService {
 	@Autowired
 	private CacheableMapper cacheableMapper;
 
-	@Cacheable(value = "userCache", key = "#username")
+	@Cacheable(value = "userCache", key = "#username", condition = "#username.length()==7")
 	public User cacheableMethod(String username) {
 		System.out.println("查询数据库");
 		return cacheableMapper.getUserByUsername(username);
